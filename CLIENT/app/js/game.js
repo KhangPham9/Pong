@@ -1,24 +1,41 @@
-import Circle from './circle.js';
+import Ball from './ball.js';
+import Paddle from './paddle.js'
 
 class Game {
   constructor(ctx) {
     this.ctx = ctx;
-    this.circle = new Circle(this.ctx, 15, 'red', 50, 50, 1, 1, 2);
+    // console.log(this.ctx.fillStyle);
+    this.paddle = new Paddle(this.ctx, 50, 50, 100, 25, 'grey');
+    this.ball = new Ball(this.ctx, 15, 'red', 50, 50, 2, 1, 2);
+    // console.log(this.ctx.fillStyle);
+
+    this.gameOver = false;
+    this.startTime;
   }
 
   start() {
     this.draw();
   }
 
-  draw() {
-    this.update();
+  draw(startTime) {
+
     this.clearCanvas();
-    this.circle.draw();
-    window.requestAnimationFrame(this.draw.bind(this));
+    this.update();
+
+    // console.log(this.ctx.fillStyle);
+    this.paddle.draw();
+    this.ball.draw();
+//
+    // console.log(this.ctx.fillStyle);
+
+    // console.log(this.ctx.fillStyle);
+
+    if (!this.gameOver)
+      window.requestAnimationFrame(this.draw.bind(this) );
   }
 
   update() {
-    this.circle.update();
+    this.ball.update();
   }
 
   clearCanvas() {
