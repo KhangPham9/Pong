@@ -1,14 +1,12 @@
 import Ball from './ball.js';
-import Paddle from './paddle.js'
+import Paddles from './paddle.js'
 
 class Game {
   constructor(ctx, settings) {
     this.ctx = ctx;
     this.settings = settings;
-    this.paddle1 = new Paddle(this.ctx, this.settings.topPaddle);
-
-
-    this.paddle2 = new Paddle(this.ctx, this.settings.bottomPaddle);
+    this.paddles = new Paddles(this.ctx, settings.topPaddle, 
+                               settings.bottomPaddle);
     this.ball = new Ball(this.ctx, this.settings.ball.circle,
                          this.settings.ball.velocity,
                          this.settings.ball.speedFactor);
@@ -25,9 +23,7 @@ class Game {
 
     this.clearCanvas();
     this.update();
-
-    this.paddle1.draw();
-    this.paddle2.draw();
+    this.paddles.draw();
     this.ball.draw();
 
 
@@ -37,6 +33,7 @@ class Game {
 
   update() {
     this.ball.update();
+    this.paddles.update();
   }
 
   clearCanvas() {
