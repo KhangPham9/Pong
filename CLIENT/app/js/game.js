@@ -2,13 +2,16 @@ import Ball from './ball.js';
 import Paddle from './paddle.js'
 
 class Game {
-  constructor(ctx) {
+  constructor(ctx, settings) {
     this.ctx = ctx;
-    // console.log(this.ctx.fillStyle);
-    this.paddle1 = new Paddle(this.ctx, 50, 50, 100, 25, 'grey');
-    this.paddle2 = new Paddle(this.ctx, 50, 725, 100, 25, 'lightblue');
-    this.ball = new Ball(this.ctx, 15, 'red', 50, 50, 2, 1, 2);
-    // console.log(this.ctx.fillStyle);
+    this.settings = settings;
+    this.paddle1 = new Paddle(this.ctx, this.settings.topPaddle);
+
+
+    this.paddle2 = new Paddle(this.ctx, this.settings.bottomPaddle);
+    this.ball = new Ball(this.ctx, this.settings.ball.circle,
+                         this.settings.ball.velocity,
+                         this.settings.ball.speedFactor);
 
     this.gameOver = false;
     this.startTime;
@@ -23,14 +26,10 @@ class Game {
     this.clearCanvas();
     this.update();
 
-    // console.log(this.ctx.fillStyle);
     this.paddle1.draw();
     this.paddle2.draw();
     this.ball.draw();
-//
-    // console.log(this.ctx.fillStyle);
 
-    // console.log(this.ctx.fillStyle);
 
     if (!this.gameOver)
       window.requestAnimationFrame(this.draw.bind(this) );

@@ -3,9 +3,9 @@ import Rectangle from './rectangle.js';
 class Paddles {}
 
 class Paddle {
-  constructor(ctx, x, y, width, height, color = 'grey') {
+  constructor(ctx, settings) {
     this.ctx = ctx;
-    this.rect = new Rectangle(ctx, x, y, width, height, color);
+    this.rect = new Rectangle(ctx, settings.paddle);
   }
 
   draw() { this.rect.draw(); }

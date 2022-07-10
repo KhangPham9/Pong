@@ -2,10 +2,11 @@ import Vector2 from './vector.js';
 
 class Circle {
 
-  constructor(ctx, r, x, y, color = 'red') {
+  constructor(ctx, {r, x, y, c = 'red'}) {
+
     this.ctx = ctx;
     this.radius = r;
-    this.color = color;
+    this.color = c;
     this.pos = new Vector2(x, y);
   }
 

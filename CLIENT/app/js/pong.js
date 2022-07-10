@@ -2,6 +2,14 @@ import Game from './game.js';
 
 let canvas = document.getElementById('canvas');
 let context = canvas.getContext('2d');
-
-let game = new Game(context);
-game.start();
+// retrieves the config.json file
+fetch(new Request('config.json'))
+.then((response) => {
+  // .json() returns a promise which will resolve and
+  // return a javascript object of the response.
+  return response.json();
+})
+.then((json) => {
+	let game = new Game(context, json);
+	game.start();
+});

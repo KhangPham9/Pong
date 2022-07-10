@@ -2,10 +2,10 @@ import Circle from './circle.js';
 import Vector2 from './vector.js';
 
 class Ball {
-  constructor(ctx, r, c, x, y, delx = 0, dely = 0, speedFactor = 1) {
+  constructor(ctx, ball, speed, speedFactor = 1) {
     this.ctx = ctx;
-    this.circle = new Circle(ctx, r, x, y, c);
-    this.vel = new Vector2(delx, dely);
+    this.circle = new Circle(ctx, ball);
+    this.vel = new Vector2(speed.x, speed.y);
     this.speedFactor = speedFactor;
     this.canvasW = document.getElementById('canvas').width;
     this.canvasH = document.getElementById('canvas').height;

@@ -1,0 +1,45 @@
+{
+	"topPaddle": {
+		"paddle": {
+			"x": 50,
+			"y": 50,
+			"width": 100,
+			"height": 25,
+			"color": "grey"
+		},
+		"keys": {
+			"up": "w",
+			"down": "s",
+			"left": "a",
+			"right": "d"
+		}
+	},
+	"bottomPaddle": {
+		"paddle": {
+			"x": 50,
+			"y": 725,
+			"width": 100,
+			"height": 25,
+			"color": "lightblue"
+		},
+		"keys": {
+			"up": "i",
+			"down": "k",
+			"left": "j",
+			"right": "l"
+		}
+	},
+	"ball": {
+		"circle": {
+			"r": 15,
+			"c": "red",
+			"x": 50,
+			"y": 50
+		},
+		"velocity": {
+			"x": 2,
+			"y": 1
+		},
+		"speedFactor": 2
+	}
+}
