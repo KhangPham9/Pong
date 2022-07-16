@@ -1,10 +1,13 @@
 import Ball from './ball.js';
-import Paddles from './paddle.js'
+import Paddles from './paddle.js';
+import Resize from './resize.js';
 
 class Game {
   constructor(ctx, settings) {
     this.ctx = ctx;
     this.settings = settings;
+    this.resize = new Resize();
+    
     this.paddles = new Paddles(this.ctx, settings.topPaddle, 
                                settings.bottomPaddle);
     this.ball = new Ball(this.ctx, this.settings.ball.circle,
@@ -13,6 +16,8 @@ class Game {
 
     this.gameOver = false;
     this.startTime;
+
+
   }
 
   start() {

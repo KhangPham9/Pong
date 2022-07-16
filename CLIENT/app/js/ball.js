@@ -7,8 +7,6 @@ class Ball {
     this.circle = new Circle(ctx, ball);
     this.vel = new Vector2(speed.x, speed.y);
     this.speedFactor = speedFactor;
-    this.canvasW = document.getElementById('canvas').width;
-    this.canvasH = document.getElementById('canvas').height;
   }
 
   draw() { this.circle.draw(); }
@@ -26,6 +24,9 @@ class Ball {
   changeVel(delx = 0, dely = 0) { this.vel = new Vector2(delx, dely); }
 
   checkBounds() {
+    this.canvasW = document.getElementById('canvas').width;
+    this.canvasH = document.getElementById('canvas').height;
+    this.top = document.getElementsByClassName('score-col')[0].offsetHeight;
     if (this.circle.pos.x + this.circle.radius >= this.canvasW) {
       this.circle.pos.x = this.canvasW - this.circle.radius;
       this.changeVel(this.vel.x * -1, this.vel.y);
@@ -37,8 +38,8 @@ class Ball {
       this.circle.pos.y = this.canvasH - this.circle.radius;
       this.changeVel(this.vel.x, this.vel.y * -1);
 
-    } else if (this.circle.pos.y <= 0 + this.circle.radius) {
-      this.circle.pos.y = this.circle.radius;
+    } else if (this.circle.pos.y <= this.circle.radius + this.top) {
+      this.circle.pos.y = this.circle.radius + this.top;
       this.changeVel(this.vel.x, this.vel.y * -1);
     }
   }

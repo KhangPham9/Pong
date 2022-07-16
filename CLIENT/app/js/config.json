@@ -13,7 +13,7 @@
 			"left": "a",
 			"right": "d"
 		},
-		"speedFactor": 5
+		"speedFactor": 10
 	},
 	"bottomPaddle": {
 		"paddle": {
@@ -29,7 +29,7 @@
 			"left": "j",
 			"right": "l"
 		},
-		"speedFactor": 5
+		"speedFactor": 10
 	},
 	"ball": {
 		"circle": {
