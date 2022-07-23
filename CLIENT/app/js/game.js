@@ -1,6 +1,7 @@
 import Ball from './ball.js';
 import Paddles from './paddle.js';
 import Resize from './resize.js';
+import ScoreBoard from './scoreboard.js';
 
 class Game {
   constructor(ctx, settings) {
@@ -14,30 +15,38 @@ class Game {
                          this.settings.ball.velocity,
                          this.settings.ball.speedFactor);
 
-    this.gameOver = false;
-    this.startTime;
+    this.scoreboard = new ScoreBoard();
 
+    this.gameOver = false;
 
   }
 
   start() {
-    this.draw();
+    this.gameLoop();
   }
 
-  draw(startTime) {
+  gameLoop(startTime) {
+    if(this.resize.flag) {
+      this.ball.changeBounds();
+      this.resize.flag = false;
+    }
 
     this.clearCanvas();
     this.update();
+    this.draw();
+
+    if(!this.gameOver){
+      window.requestAnimationFrame(this.gameLoop.bind(this));
+    }
+  }
+
+  draw() {
     this.paddles.draw();
-    this.ball.draw();
-
-
-    if (!this.gameOver)
-      window.requestAnimationFrame(this.draw.bind(this) );
+    this.ball.draw();    
   }
 
   update() {
-    this.ball.update();
+    this.ball.update(this.scoreboard);
     this.paddles.update();
   }
 

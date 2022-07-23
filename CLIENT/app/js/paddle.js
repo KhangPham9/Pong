@@ -18,6 +18,10 @@ class Paddle {
     this.rect.topLeftPos.x += this.vel.x * this.speedFactor;
     this.rect.topLeftPos.y += this.vel.y * this.speedFactor;
   }
+
+  changeBounds() {
+    this.rect.topLeftPos.y = 0;
+  }
 }
 
 class Paddles {
