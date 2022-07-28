@@ -1,10 +1,27 @@
+import Vector2 from './vector.js';
+
 class Rectangle {
   constructor(ctx, {x, y, width, height, color}) {
     this.ctx = ctx;
-    this.topLeftPos = {x : x, y : y};
-    this.width = width;
-    this.height = height;
+    this.topLeftPos = new Vector2(this.calcXCoord(x), this.calcYCoord(y));
+    this.width = this.calcWidth(width);
+    this.height = this.calcHeight(height);
     this.color = color;
+  }
+
+  calcXCoord(x) {
+    return x * window.innerWidth;
+  }
+  calcYCoord(y) {
+    return y * window.innerHeight;
+  }
+
+  calcWidth(width) {
+    return window.innerWidth * width;
+  }
+
+  calcHeight(height) {
+    return window.innerHeight * height;
   }
 
   draw() {

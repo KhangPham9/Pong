@@ -30,6 +30,7 @@ class Game {
   gameLoop(startTime) {
     if(this.resize.flag) {
       this.ball.changeBounds();
+      this.paddles.changeBounds();
       this.resize.flag = false;
     }
     if (!this.menu.show) {
