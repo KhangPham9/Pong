@@ -10,7 +10,9 @@ class Paddle {
     this.rect = new Rectangle(ctx, settings.paddle);
     this.vel = new Vector(0 ,0);
     this.speedFactor = settings.speedFactor;
-    this.input = new Input(this.vel, settings.keys);
+
+    this.stack = [0];
+    this.input = new Input(this.stack, settings.keys);
 
     this.canvasWidth = document.getElementById('canvas').width;
   }
@@ -18,6 +20,9 @@ class Paddle {
   draw() { this.rect.draw(); }
 
   update() {
+    console.log(this.stack[this.stack.length - 1]);
+    // console.log(this.stack);
+    this.vel.x = this.stack[this.stack.length - 1];
     this.rect.topLeftPos.x += this.vel.x * this.speedFactor;
     this.rect.topLeftPos.y += this.vel.y * this.speedFactor;
     this.checkBounds();
